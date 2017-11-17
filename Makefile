@@ -19,6 +19,15 @@ endif
 arm: sample-target sample-library.so
 	$(CC) -marm $(CFLAGS) -DARM -o inject utils.c ptrace.c inject-arm.c -ldl
 
+android-arm: sample-target sample-library.so
+	$(CC) -marm $(CFLAGS) -DARM -DANDROID -o inject utils.c ptrace.c inject-arm.c -ldl
+
+android-x86: sample-target sample-library.so
+	$(CC) $(CFLAGS) -DANDROID -o inject utils.c ptrace.c inject-x86.c -ldl
+
+android-x86_64: sample-target sample-library.so
+	$(CC) $(CFLAGS) -DANDROID -o inject utils.c ptrace.c inject-x86_64.c -ldl
+
 x86: sample-target sample-library.so
 	$(CC) $(CFLAGS) -o inject utils.c ptrace.c inject-x86.c -ldl
 	

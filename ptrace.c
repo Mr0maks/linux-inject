@@ -3,7 +3,11 @@
 #include <string.h>
 #include <sys/ptrace.h>
 #include <sys/user.h>
+#ifdef ANDROID
+#include <sys/wait.h>
+#else
 #include <wait.h>
+#endif
 #include <time.h>
 
 #include "ptrace.h"
