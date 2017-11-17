@@ -35,6 +35,18 @@
 
             make x86_64
 
+    * android arm
+
+            make android-arm CC=/path/to/you/sysroot LD=/path/to/you/sysroot
+
+    * android x86
+
+            make make android-x86 CC=/path/to/you/sysroot LD=/path/to/you/sysroot
+
+    * android x86_64
+
+            make android-x86_64 CC=/path/to/you/sysroot LD=/path/to/you/sysroot
+
 ## Usage
 
     ./inject [-n process-name] [-p pid] [library-to-inject]
