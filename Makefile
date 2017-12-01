@@ -1,5 +1,6 @@
 CC	= clang
-CFLAGS	= -std=gnu99 -ggdb
+CFLAGS = -ggdb
+#CFLAGS	= -std=gnu99 -ggdb
 UNAME_M := $(shell uname -m)
 
 .PHONY: x86 x86_64 arm
@@ -18,6 +19,9 @@ endif
 
 arm: sample-target sample-library.so
 	$(CC) -marm $(CFLAGS) -DARM -o inject utils.c ptrace.c inject-arm.c -ldl
+
+arm64: sample-target sample-library.so
+	$(CC) -m32 $(CFLAGS) -DARM -o inject utils.c ptrace.c inject-arm.c -ldl
 
 android-arm: sample-target sample-library.so
 	$(CC) -marm $(CFLAGS) -DARM -DANDROID -o inject utils.c ptrace.c inject-arm.c -ldl
@@ -52,3 +56,4 @@ clean:
 	rm -f sample-library32.so
 	rm -f sample-target32
 	rm -f inject32
+	rm -f *.so
